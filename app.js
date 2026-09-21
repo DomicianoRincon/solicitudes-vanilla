@@ -1,3 +1,5 @@
+const STORAGE_KEY = "solicitudes.requests";
+
 const sampleRequests = [
   { id: 1, title: "Ana Pérez · 5 días de descanso", approved: false, createdAt: "2026-09-14T08:05:00" },
   { id: 2, title: "Luis Gómez · Cita médica el jueves", approved: true, createdAt: "2026-09-14T08:10:00" },
@@ -9,10 +11,31 @@ const input = document.getElementById("new-request-input");
 const list = document.getElementById("request-list");
 const counter = document.getElementById("request-counter");
 
-let requests = sampleRequests;
+let requests = loadRequests();
+
+function loadRequests() {
+  try {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved !== null) {
+      return JSON.parse(saved);
+    }
+  } catch (error) {
+    console.warn("No se pudo leer lo que estaba guardado.", error);
+  }
+  return sampleRequests;
+}
+
+function saveRequests() {
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(requests));
+  } catch (error) {
+    console.warn("No se pudo guardar.", error);
+  }
+}
 
 function addRequest(title) {
   requests.push({ id: Date.now(), title: title, approved: false, createdAt: new Date().toISOString() });
+  saveRequests();
   render();
 }
 
@@ -20,6 +43,7 @@ function toggleRequest(id) {
   requests = requests.map(function (request) {
     return request.id === id ? { ...request, approved: !request.approved } : request;
   });
+  saveRequests();
   render();
 }
 
