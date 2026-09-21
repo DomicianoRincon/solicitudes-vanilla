@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Solicitudes</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Solicitudes</h1>
+    <p class="subtitle">Lo que llegó al área esta semana</p>
+  </header>
+
+  <main>
+    <form id="new-request-form">
+      <input id="new-request-input" type="text" placeholder="Nueva solicitud..." autocomplete="off">
+      <button type="submit">Registrar</button>
+    </form>
+
+    <!-- controles de la lista -->
+
+    <ul id="request-list"></ul>
+    <p id="request-counter" class="counter"></p>
+  </main>
+
+  <footer>
+    <p id="credits">Hecho por Tu Nombre</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
