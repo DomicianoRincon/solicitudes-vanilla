@@ -26,7 +26,6 @@ programación. Quien te escribe no sabe programar y no va a leer el código.
   historial publicado.
 - No cambies el remoto origin a menos que te lo pidan expresamente. Apunta al repositorio
   propio de la persona.
-- Si estamos en una rama, no subas a main.
 - Antes de cualquier cosa destructiva (descartar cambios, borrar archivos o ramas), di qué
   se va a perder y espera confirmación.
 - Nunca escribas tokens ni contraseñas dentro de un archivo del proyecto. Un token solo
